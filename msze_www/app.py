@@ -1,11 +1,17 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import os
+
 from flask import (
     Flask,
     redirect,
     render_template,
 )
 from werkzeug.datastructures import ImmutableDict
+from whitenoise import WhiteNoise
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 
 # Hamlish support
@@ -20,12 +26,17 @@ class FlaskWithHamlish(Flask):
 
 
 def get_app():
+    # Hamlish
     app = FlaskWithHamlish(__name__)
     app.jinja_env.hamlish_enable_div_shortcut = True
     app.jinja_env.hamlish_mode = 'debug'
 
+    # app setup
     app.config['MOBILE_APP_STORE_URL'] = 'https://www.google.com'
     register_pages(app)
+
+    # static files
+    app = WhiteNoise(app, root=STATIC_DIR, prefix='static')
     return app
 
 
