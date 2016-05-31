@@ -33,10 +33,8 @@ def get_app():
     app.jinja_env.hamlish_mode = 'debug'
 
     # app setup
-    app.config['MOBILE_APP_STORE_URL'] = 'https://www.google.com'
-    app.config['DATAFILE_URL_PATH'] = '/api/datafile.json'
-    app.config['DATAFILE_FILEPATH'] = 'data/datafile.json'
-    app.config['CACHE_TIME'] = 24 * 60 * 60  # 24h
+    app.config.from_object('msze_www.settings')
+    app.config.from_envvar('FLASK_SETTINGS')
     register_controllers(app)
 
     # static files

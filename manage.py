@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import os
+
 from flask.ext.script import Manager, Server
 
 from msze_www.app import get_app
 
 
+if "FLASK_SETTINGS" not in os.environ:
+    os.environ["FLASK_SETTINGS"] = "settings/dev.py"
 app = get_app()
 manager = Manager(app)
 manager.add_command(
