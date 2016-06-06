@@ -1,4 +1,6 @@
 -extends "base.haml"
 
 -block content:
-    TEST: {{ app.debug }}
+    %ul
+        %li << ENV NAME: {{ config.ENV_NAME }}
+        %li << TEST: {{ config.DEBUG }}

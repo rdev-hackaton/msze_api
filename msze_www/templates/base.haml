@@ -1,14 +1,41 @@
 ﻿<!DOCTYPE html>
-%html
+%html.no-js
     %head
         %meta charset="utf-8"
+        %meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+        %meta name="viewport" content="width=device-width, initial-scale=1.0"
+
         %title << Msze Święte
-        <!-- stylesheets -->
-        %link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/slate/bootstrap.min.css" rel="stylesheet"
+        %meta name="title" content="Proto App - Responsive One Page App Showcase"
+        %meta name="description" content=""
+        %meta name="author" content="lhaze & ppeczek"
+        %meta name="Copyright" content="Copyright lhaze@lhaze.name 2016. All Rights Reserved."
+        ;%meta name="google-site-verification" content=""
+
+        <!-- styles -->
+        %link rel="icon" type="image/png" href="/static/icon.png"
+        %link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600|Varela+Round'
+        %link rel="stylesheet" href="/static/stylesheets/app.css"
+        %link rel="stylesheet" href="/static/stylesheets/hover-min.css"
+        %link rel="stylesheet" href="/static/stylesheets/style.css"
+
+        %script src="/static/js/vendor/modernizr.js"
+
         -block extra_head
+
     %body
-        %h1 << Test page
-        .container
-            Tu będzie jakaś zawartość.
-            %br.
-            -block content
+        %header#hero-header
+            %div.row
+                %div.large-12.columns
+                    %a#logo
+                        %img src="/static/images/app-icon.png" alt="proto app" class="buzz-out"
+
+                    %h1.text-center << Welcome to your app showcase
+                    %h5.text-center << Since you’re here write a little description of what your app does and why users should get it!
+
+        -block content
+
+        %script src="/static/js/vendor/jquery.js"
+        %script src="/static/js/foundation.min.js"
+        %script src="/static/js/app.js"
+        -block extra_bottom_scripts
